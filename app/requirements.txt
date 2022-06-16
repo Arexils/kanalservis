@@ -7,3 +7,5 @@ requests
 SQLAlchemy~=1.4.35
 SQLAlchemy-Utils
 psycopg2
+Flask
+flask-sqlalchemy
