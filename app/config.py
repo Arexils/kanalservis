@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_assets import Environment, Bundle
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -18,3 +19,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = ConfigDB.url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
+
+assets = Environment(app)
+assets.url = app.static_url_path
+assets.debug = False
+
+scss = Bundle(
+    'sass/main.sass',
+    filters=['libsass', 'pyscss', ],
+    output='css/main.css')
+assets.register('scss_all', scss)

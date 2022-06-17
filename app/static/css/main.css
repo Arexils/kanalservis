@@ -1,3 +1,143 @@
-body{
-    background: #cccccc;
+.container {
+    margin: auto;
+    max-width: 1320px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+
+@media screen and (max-width: 1400px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 16px;
+    }
+}
+
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    transition: all 0.3s;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+a:hover {
+    color: #ababab;
+}
+
+body, html {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.top_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: inherit;
+}
+
+.bg_header {
+    width: 100%;
+    height: 250px;
+    background: #47e586;
+}
+
+.logo {
+    position: absolute;
+    padding: 5px;
+    height: 180px;
+    left: 20px;
+}
+
+.logo img {
+    height: 100%;
+}
+
+.div_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 50%;
+}
+
+.div_table {
+    flex: 1 1 50%;
+    background: #8B9898;
+    color: black;
+    height: 270px;
+    width: auto;
+    overflow-y: scroll;
+}
+
+.div_table table th {
+    background: #0077aa;
+}
+
+.total_price {
+    text-align: center;
+    border: #191919 solid 1px;
+    margin: 10px 0;
+}
+
+.total_price h1 {
+    background: black;
+    color: white;
+}
+
+.total_price p {
+    font-size: 52px;
 }

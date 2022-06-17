@@ -9,3 +9,6 @@ SQLAlchemy-Utils
 psycopg2
 Flask
 flask-sqlalchemy
+flask-assets
+pyscss
+libsass

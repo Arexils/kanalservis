@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import render_template
 from sqlalchemy_utils import database_exists, create_database
 
 from business_logic import update_data
@@ -8,11 +8,11 @@ from database.models import Orders
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        update_data()
-        return redirect('/')
+    update_data()
     items_all = Orders.query.filter_by().order_by(Orders.id).all()
-    return render_template('index.html', items=items_all)
+    list_prices = [i.price_usd for i in items_all]
+    date = [i.delivery_time for i in items_all]
+    return render_template('index.html', items=items_all, values=list_prices, labels=date, total=sum(list_prices))
 
 
 if not database_exists(db.engine.url):
