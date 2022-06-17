@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect
 from sqlalchemy_utils import database_exists, create_database
 
-from business_logic.general import update_data
+from business_logic import update_data
 from config import app, db
 from database.models import Orders
 
