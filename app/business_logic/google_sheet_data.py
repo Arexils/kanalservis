@@ -7,7 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 def get_data_from_sheet() -> dict:
     # Файл, полученный в Google Developer Console
-    CREDENTIALS_FILE = '../token.json'
+    CREDENTIALS_FILE = './business_logic/token.json'
     # ID Google Sheets документа
     spreadsheet_id = os.getenv('SPREADSHEET_ID')
 
@@ -26,4 +26,4 @@ def get_data_from_sheet() -> dict:
         majorDimension='ROWS'
     ).execute()
 
-    return values
+    return values['values'][1:]

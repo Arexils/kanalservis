@@ -1,27 +1,22 @@
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
+from flask import render_template, request, redirect
 from sqlalchemy_utils import database_exists, create_database
 
-from database.configDB import ConfigDB
-from database.models import Base
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = ConfigDB.url
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-db = SQLAlchemy(app)
+from business_logic.general import update_data
+from config import app, db
+from database.models import Orders
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    items_all = [1, 2, 3, 4, 5]
+    if request.method == 'POST':
+        update_data()
+        return redirect('/')
+    items_all = Orders.query.filter_by().order_by(Orders.id).all()
     return render_template('index.html', items=items_all)
 
 
-engine = create_engine(ConfigDB.url, echo=False)
-if not database_exists(engine.url):
-    create_database(engine.url)
-Base.metadata.create_all(engine)
+if not database_exists(db.engine.url):
+    create_database(db.engine.url)
 
 db.init_app(app)
 db.create_all()

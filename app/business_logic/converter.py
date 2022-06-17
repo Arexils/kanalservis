@@ -13,4 +13,5 @@ def parse_cbr(char_code='USD') -> float or None:
 
 
 def to_rub(valute_value, nominal) -> float:
-    return valute_value * nominal
+    to_fixed = f'{valute_value * nominal:.2f}'  # Оставляем 2 знака после ","
+    return float(to_fixed)

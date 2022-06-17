@@ -26,23 +26,25 @@
 
 <body>
 <br>
-
+<form action="/" method="post">
+    <button type="submit" class="btn btn-primary">Обновить</button>
+</form>
 <table border=1 align="center">
     <tr>
-        <th> # </th>
-        <th> Заказ № </th>
-        <th> Стоимость USD </th>
-        <th> Стоимость RUB </th>
-        <th> Сроки поставки </th>
+        <th> #</th>
+        <th> Заказ №</th>
+        <th> Стоимость USD</th>
+        <th> Стоимость RUB</th>
+        <th> Сроки поставки</th>
     </tr>
 
     {% for item in items %}
         <tr>
-            <td align="center"> {{ item[0] }} </td>
-            <td align="center"> {{ item[1] }} </td>
-            <td align="center"> {{ item[2] }} </td>
-            <td align="center"> {{ item[3] }} </td>
-            <td align="center"> {{ item[4] }} </td>
+            <td align="center"> {{ item.id }} </td>
+            <td align="center"> {{ item.order }} </td>
+            <td align="center"> {{ item.price_usd }} </td>
+            <td align="center"> {{ item.price_rub }} </td>
+            <td align="center"> {{ item.delivery_time }} </td>
         </tr>
     {% endfor %}
 
